@@ -5,7 +5,7 @@ const createError = require('http-errors'),
   path = require('path'),
   cookieParser = require('cookie-parser'),
   logger = require('morgan'),
-  indexRouter = require('./routes/index').default,
+  indexRouter = require('./routes/index'),
   app = express();
 
 // view engine setup
@@ -18,11 +18,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 // 404
-app.use(function (_, _, next) {
+app.use((_, __, next) => {
   next(createError(404));
 });
 // error handler
-app.use(function (err, _, res, _) {
+app.use((err, _, res, __) => {
   res.locals.message = err.message;
   res.locals.error = err
   res.status(err.status || 500);
