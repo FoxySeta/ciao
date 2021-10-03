@@ -2,13 +2,14 @@
 
 const db = require('../db');
 
-module.exports = function () {
-  db.serialize(function () {
-    db.run("CREATE TABLE IF NOT EXISTS users ( \
-      username TEXT UNIQUE, \
-      hashed_password BLOB, \
+module.exports = () => {
+  db.serialize(() => {
+    db.run("CREATE TABLE IF NOT EXISTS Users ( \
+      email TEXT UNIQUE, \
+      password BLOB, \
       salt BLOB, \
-      name TEXT \
+      name TEXT, \
+      qr BLOB \
     )");
   });
 };

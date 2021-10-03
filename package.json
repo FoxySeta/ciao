@@ -18,7 +18,7 @@
     "url": "https://github.com/foxyseta/ciao/issues"
   },
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "PORT=${PORT:=3000} SECRET=${SECRET:=default_secret} node ./bin/www"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

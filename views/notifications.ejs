@@ -1,57 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
-    <title>Log in example | Passport.js</title>
-    <meta name="description" content="Express 4.x app using Passport for authentication with username and password.">
+    <title>Notifications | Ciao!</title>
     <link rel="stylesheet" href="/stylesheets/pico.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <style>
-main {
-  x-border: 1px solid yellow;
-} 
-
-:root:not([data-theme=dark]), [data-theme=light] {
-    --nav-background: rgba(255, 255, 255, 0.7);
-    --nav-border: rgba(115, 130, 140, 0.2);
-}
-
-[data-theme=dark] {
-    --nav-background: rgba(16, 24, 30, 0.8);
-    --nav-border: rgba(115, 130, 140, 0.2);
-}
-
-@media (min-width: 576px) {
-  body > main {
-    padding-top: calc(1rem * var(--spacing-factor-sm) + 3.5rem);
-  }
-}
-
-@media (min-width: 768px) {
-  body > main {
-    padding-top: calc(1rem * var(--spacing-factor-md) + 3.5rem);
-  }
-}
-
-@media (min-width: 992px) {
-  body > main {
-    padding-top: calc(1rem * var(--spacing-factor-lg) + 3.5rem);
-  }
-}
-
-body>main {
-    padding-top: calc(1rem * var(--spacing-factor-xs) + 3.5rem);
-}
-    </style>
-
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   </head>
-
   <body>
-    
     <%- include('header'); -%>
-    
     <main class="container">
       <% notifications.forEach(function(notification){ %>
         <article>
@@ -60,10 +18,7 @@ body>main {
           <% } %>
           <p><%- notification.body %></p>
         </article>
-        
       <% }); %>
     </main>
-    
   </body>
-
 </html>
