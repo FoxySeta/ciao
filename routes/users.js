@@ -26,7 +26,7 @@ router.post('/', (req, res, next) => {
       }, err => {
         if (err)
           return next(err);
-        res.redirect('/');
+        res.redirect('/myaccount');
       });
     });
   });

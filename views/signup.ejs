@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-background-primary-light">
   <head>
     <title>Sign up | Ciao!</title>
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   </head>
-  <body>
+  <body class="has-text-light is-family-monospace container">
     <%- include('header'); -%>
-    <main class="container">
-      <article class="grid">
-        <div>
-          <hgroup>
-            <h1>Sign up</h1>
-          </hgroup>
-          <form action="/users" method="post">
-            <input type="text" name="name" placeholder="Name">
-            <input type="text" name="username" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-            <button type="submit" class="contrast">Sign up</button>
-          </form>
-        </div>
-        <div></div>
-      </article>
-    </main>
+    <section class="section container">
+      <nav class="panel is-primary">
+        <p class="panel-heading">Sign up</p>
+        <form action="/login/password" method="post" class="panel-block columns">
+          <div class="field column">
+            <label class="label">Name</label>
+            <input class="input control is-primary" type="text" name="name" placeholder="Name">
+          </div>
+          <div class="field column">
+            <label class="label">Email</label>
+            <input class="input control is-primary" type="text" name="username" placeholder="Email">
+          </div>
+          <div class="field column">
+            <label class="label">Password</label>
+            <input class="control is-primary" type="password" name="password" placeholder="Password">
+          </div>
+          <div class="column">
+            <button type="submit" class="button is-primary">Sign up</button>
+          </div>
+        </form>
+      </nav>
+    </section>
   </body>
 </html>

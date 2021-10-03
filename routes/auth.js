@@ -6,7 +6,7 @@ router.get('/login', (_, res, __) => {
   res.render('login');
 });
 router.post('/login/password', require('passport').authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/myaccount',
   failureRedirect: '/login',
   failureMessage: true
 }));

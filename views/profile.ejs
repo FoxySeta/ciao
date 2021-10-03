@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-background-primary-light">
   <head>
     <title>Profile | Ciao!</title>
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   </head>
-  <body>
+  <body class="has-text-light is-family-monospace container">
     <%- include('header'); -%>
     <main class="container">
       <div class="grid">
         <div>
-          <hgroup>
-            <h4><%= user.name %></h4>
-            <p><small><%= user.username %></small></p>
-          </hgroup>
+          <section class="section container">
+            <p class="title"><%= user.name %></p>
+            <p class="subtitle"><%= user.username %></p>
+          </section>
           <% if (user.emails) { %>
           <p><small>Email: </small><%= user.emails[0].value %></p>
           <% } %>
