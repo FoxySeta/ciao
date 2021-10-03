@@ -11,7 +11,7 @@ router.get('/',
       res.render('profile', {
         user: {
           id: row.id.toString(),
-          email: row.email,
+          username: row.email,
           name: row.name,
           qrcode: row.qrcode
         }

@@ -30,5 +30,6 @@ app.use(passport.authenticate('session'));
 app.use('/', require('./routes/index'));
 app.use('/', require('./routes/auth'));
 app.use('/myaccount', require('./routes/myaccount'));
+app.use('/users', require('./routes/users'));
 
 module.exports = app;

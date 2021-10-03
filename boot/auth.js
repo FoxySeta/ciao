@@ -10,15 +10,15 @@ module.exports = () => {
       if (err)
         return cb(err);
       if (!row)
-        return cb(null, false, {message: 'Incorrect email or password.'});
+        return cb(null, false, {message: 'Incorrect email.'});
       crypto.pbkdf2(password, row.salt, 310000, 32, 'sha256', (err, password) => {
         if (err)
           return cb(err);
         if (!crypto.timingSafeEqual(row.password, password))
-          return cb(null, false, {message: 'Incorrect email or password.'});
+          return cb(null, false, {message: 'Incorrect password.'});
         return cb(null, {
           id: row.id.toString(),
-          email: row.email,
+          username: row.email,
           name: row.name
         });
       });
@@ -26,7 +26,7 @@ module.exports = () => {
   }));
   passport.serializeUser((user, cb) => {
     process.nextTick(() => {
-      cb(null, {id: user.id, email: user.email});
+      cb(null, {id: user.id, username: user.username});
     });
   });
   passport.deserializeUser((user, cb) => {

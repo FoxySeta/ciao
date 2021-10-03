@@ -9,7 +9,7 @@ module.exports = () => {
       password BLOB, \
       salt BLOB, \
       name TEXT, \
-      qr BLOB \
+      qrcode BLOB \
     )");
   });
 };
