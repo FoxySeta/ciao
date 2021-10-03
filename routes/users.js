@@ -16,7 +16,7 @@ router.post('/', (req, res, next) => {
       password,
       salt,
       req.body.name
-    ], err => {
+    ], function (err) {
       if (err)
         return next(err);
       req.login({
