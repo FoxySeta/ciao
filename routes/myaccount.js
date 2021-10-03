@@ -1,15 +1,11 @@
-// routes/myaccount.js: show profile
+// routes/myaccount.js: show user profile
 
-import {Router} from 'express';
-import {ensureLoggedIn} from 'connect-ensure-login';
-import {get} from '../db';
-
-const router = Router();
+const router = require('express').Router();
 
 router.get('/',
-  ensureLoggedIn(),
+  require('connect-ensure-login').ensureLoggedIn(),
   function (req, res, next) {
-    get('SELECT rowid AS id, username, name FROM users WHERE rowid = ?', [req.user.id], function (err, row) {
+    require('../db').get('SELECT rowid AS id, username, name FROM users WHERE rowid = ?', [req.user.id], function (err, row) {
       if (err)
         return next(err);
       res.render('profile', {
@@ -22,4 +18,4 @@ router.get('/',
     });
   });
 
-export default router;
+module.exports = router;

@@ -1,21 +1,18 @@
-// routes/auth.js: routes used or authentication
+// routes/auth.js: authentication
 
-import {Router} from 'express';
-import {authenticate} from 'passport';
+const router = require('express').express.Router();
 
-const router = Router();
-
-router.get('/login', function (_, res, _) {
+router.get('/login', function (_, res, __) {
   res.render('login');
 });
-router.post('/login/password', authenticate('local', {
+router.post('/login/password', require('passport').authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',
   failureMessage: true
 }));
-router.get('/logout', function (req, res, _) {
+router.get('/logout', function (req, res, next) {
   req.logout();
   res.redirect('/');
 });
 
-export default router;
+module.exports = router;

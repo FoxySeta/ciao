@@ -1,32 +1,35 @@
-// app.js: app component
+// app.js: application component
 
-const createError = require('http-errors'),
-  express = require('express'),
+const express = require('express'),
+  passport = require('passport'),
   path = require('path'),
-  cookieParser = require('cookie-parser'),
-  logger = require('morgan'),
-  indexRouter = require('./routes/index'),
   app = express();
 
-// view engine setup
+require('./boot/db')();
+require('./boot/auth')();
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(logger('dev'));
+
+app.use(require('morgan')('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use(cookieParser());
+app.use(require('cookie-parser')());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', indexRouter);
-// 404
-app.use((_, __, next) => {
-  next(createError(404));
+app.use(require('express-session')({secret: process.env.SECRET, resave: false, saveUninitialized: false}));
+app.use(function (req, res, next) {
+  const msgs = req.session.messages || [];
+  res.locals.messages = msgs;
+  res.locals.hasMessages = !!msgs.length;
+  req.session.messages = [];
+  next();
 });
-// error handler
-app.use((err, _, res, __) => {
-  res.locals.message = err.message;
-  res.locals.error = err
-  res.status(err.status || 500);
-  res.render('error');
-});
+app.use(passport.initialize());
+app.use(passport.authenticate('session'));
+
+app.use('/', require('./routes/index'));
+app.use('/', require('./routes/auth'));
+app.use('/myaccount', require('./routes/myaccount'));
+app.use('/users', require('./routes/users'));
 
 module.exports = app;

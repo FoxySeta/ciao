@@ -1,10 +1,9 @@
-// routes/index.js: home page
+// routes/index.js: main route
 
-const express = require('express'),
-  router = express.Router();
+const router = require('express').Router();
 
-router.get('/', function (_, res, __) {
-  res.render('index', {title: 'Express'});
+router.get('/', function (req, res, next) {
+  res.render('index', {user: req.user});
 });
 
 module.exports = router;

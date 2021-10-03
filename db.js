@@ -1,3 +1,5 @@
-import {Database} from 'sqlite3';
+// db.js: database access
 
-export default new Database('db.sqlite3');
+const Database = require('sqlite3').Database;
+
+module.exports = new Database('db.sqlite3');
