@@ -8,25 +8,30 @@ router.get('/new', (_, res, __) => {
 });
 router.post('/', (req, res, next) => {
   const salt = crypto.randomBytes(16);
-  crypto.pbkdf2(req.body.password, salt, 310000, 32, 'sha256', (err, password) => {
+  require('qrcode').toString(process.env.DOMAIN + '/scan&email=' + req.body.username, {type: 'svg'}, (err, qrcode) => {
     if (err)
-      return next(err);
-    require('../db').run('INSERT INTO Users (email, password, salt, name) VALUES (?, ?, ?, ?)', [
-      req.body.username,
-      password,
-      salt,
-      req.body.name
-    ], function (err) {
+      return nex(err);
+    crypto.pbkdf2(req.body.password, salt, 310000, 32, 'sha256', (err, password) => {
       if (err)
         return next(err);
-      req.login({
-        id: this.lastID.toString(),
-        username: req.body.username,
-        name: req.body.name
-      }, err => {
+      require('../db').run('INSERT INTO Users (email, password, salt, name, qrcode) VALUES (?, ?, ?, ?, ?)', [
+        req.body.username,
+        password,
+        salt,
+        req.body.name,
+        qrcode
+      ], function (err) {
         if (err)
           return next(err);
-        res.redirect('/myaccount');
+        req.login({
+          id: this.lastID.toString(),
+          username: req.body.username,
+          name: req.body.name
+        }, err => {
+          if (err)
+            return next(err);
+          res.redirect('/myaccount');
+        });
       });
     });
   });

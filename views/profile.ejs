@@ -13,8 +13,19 @@
       <div class="grid">
         <div>
           <section class="section container">
-            <p class="title"><%= user.name %></p>
-            <p class="subtitle"><%= user.username %></p>
+            <div class="box columns is-vcentered">
+                <div class="column is-two-fifths image">
+                  <%- user.qrcode %>
+                </div>
+                <div class="column">
+                  <p>
+                    <span class="title"><%= user.name %></span>
+                    is on <i>Ciao!</i>
+                  </p>
+                  <p class="subtitle"><br /><%= user.username %>
+                  </p>
+              </div>
+            </div>
           </section>
           <% if (user.emails) { %>
           <p><small>Email: </small><%= user.emails[0].value %></p>

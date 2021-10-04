@@ -2,4 +2,7 @@
 
 const Database = require('sqlite3').Database;
 
-module.exports = new Database('db.sqlite3');
+module.exports = new Database('database.sqlite3', err => {
+  if (err)
+    console.error(err.message);
+});
