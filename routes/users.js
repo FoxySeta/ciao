@@ -8,7 +8,7 @@ router.get('/new', (_, res, __) => {
 });
 router.post('/', (req, res, next) => {
   const salt = crypto.randomBytes(16);
-  require('qrcode').toString(process.env.DOMAIN + '/scan&email=' + req.body.username, {type: 'svg'}, (err, qrcode) => {
+  require('qrcode').toString('https://' + process.env.DOMAIN + '/scan?email=' + req.body.username, {type: 'svg'}, (err, qrcode) => {
     if (err)
       return nex(err);
     crypto.pbkdf2(req.body.password, salt, 310000, 32, 'sha256', (err, password) => {

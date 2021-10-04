@@ -31,5 +31,6 @@ app.use('/', require('./routes/index'));
 app.use('/', require('./routes/auth'));
 app.use('/myaccount', require('./routes/myaccount'));
 app.use('/users', require('./routes/users'));
+app.use('/scan', require('./routes/scanner'));
 
 module.exports = app;
