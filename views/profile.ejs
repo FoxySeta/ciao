@@ -42,7 +42,7 @@
               <ul class="menu-list is-primary">
                 <% if (typeof user.friends !== 'undefined')
                   user.friends.forEach((friend) => { %>
-                    <li class="is-primary"><a href='mailto:<%= friend.email %>'><%= friend.name %></a></li>
+                  <li class="is-primary"><a href='mailto:<%= friend.email %>'><div class="has-text-primary-dark"><%= friend.name %></div> <%= friend.email %></a></li>
                   <% }); %>
               </ul>
             </aside>
