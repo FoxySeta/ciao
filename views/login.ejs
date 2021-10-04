@@ -11,14 +11,16 @@
     <%- include('header'); -%>
     <section class="section container">
     <% if (hasMessages) { %>
-      <div class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-content">
+      <div class="message is-danger">
+        <div class="message-header">Error</div>
+        <div class="message-body">
           <ul>
             <% messages.forEach((message) => { %>
               <li><%= message %></li>
             <% }); %>
           </ul>
+        </div>
+      </div>
     <% } %>
       <nav class="panel is-primary">
         <p class="panel-heading">Sign in</p>
