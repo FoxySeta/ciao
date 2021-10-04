@@ -9,7 +9,7 @@ code. It is a lightweight, no-nonsense web application.
 
 Before the event, you are to sign in with your credentials and print your badge.
 Make sure to pin it on your chest: as you meet new people, they might want to
-scan its QR code, or you could scan theirs. Either way, both of your email
+scan its QR code, or you could scan theirs. Either way, both your email
 addresses will be added to the other person's _Ciao!_ contact list.
 
 ## User setup
