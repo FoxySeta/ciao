@@ -26,10 +26,15 @@
                   </p>
               </div>
             </div>
+            <aside class="box menu is-primary">
+              <p class="menu-label is-primary">Friends</p>
+              <ul class="menu-list is-primary">
+                  <% user.friends.forEach((friend) => { %>
+                    <li class="is-primary"><a href='mailto:<%= friend.email %>'><%= friend.name %></a></li>
+                  <% }); %>
+              </ul>
+            </aside>
           </section>
-          <% if (user.emails) { %>
-          <p><small>Email: </small><%= user.emails[0].value %></p>
-          <% } %>
         </div>
       </div>
     </main>
